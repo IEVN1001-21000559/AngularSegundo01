@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <h4>A por B</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formulario" (ngSubmit)="calcular()">
+
+        <div class="mb-3">
+          <label for="numeroA" class="form-label">Valor de 'a':</label>
+          <input
+            type="number"
+            id="numeroA"
+            class="form-control"
+            formControlName="numeroA"
+            placeholder="pon numero">
+        </div>
+
+        <div class="mb-3">
+          <label for="numeroB" class="form-label">Valor de 'b':</label>
+          <input
+            type="number"
+            id="numeroB"
+            class="form-control"
+            formControlName="numeroB"
+            placeholder="Veces que se suman">
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="formulario.invalid">
+          Calcular
+        </button>
+
+      </form>
+
+      <div *ngIf="resultado !== undefined" class="mt-4 alert alert-info">
+<h5>Resultado: {{ proceso_suma }} = {{ resultado }}</h5>        </div>
+    </div>
+  </div>
+</div>
