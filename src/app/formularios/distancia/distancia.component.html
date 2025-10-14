@@ -1,0 +1,93 @@
+<!--<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-4">
+        <h3 class="mb-4 text-center">Distancia entre dos puntos</h3>
+
+        <form [formGroup]="formularioDistancia">
+
+          <div class="mb-3">
+            <label for="x1" class="form-label fw-bold">x1:</label>
+            <input type="number" class="form-control" id="x1" formControlName="x1">
+          </div>
+          <div class="mb-3">
+            <label for="y1" class="form-label fw-bold">y1:</label>
+            <input type="number" class="form-control" id="y1" formControlName="y1">
+          </div>
+          <div class="mb-3">
+            <label for="x2" class="form-label fw-bold">x2:</label>
+            <input type="number" class="form-control" id="x2" formControlName="x2">
+          </div>
+          <div class="mb-3">
+            <label for="y2" class="form-label fw-bold">y2:</label>
+            <input type="number" class="form-control" id="y2" formControlName="y2">
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-primary mt-3"
+            (click)="calcularDistancia()"
+            [disabled]="!formularioDistancia.valid">
+            CALCULAR
+          </button>
+
+          <h4 class="mt-4">La distancia entre los dos puntos es: {{ distancia | number:'1.2-2' }}</h4>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<div class="flex justify-center py-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
+
+  <form class="max-w-sm w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        [formGroup]="formularioDistancia">
+
+    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+      Distancia entre dos puntos
+    </h3>
+
+    <div class="mb-4">
+      <label for="x1" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">x1:</label>
+      <input type="number" id="x1" formControlName="x1"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+             required />
+    </div>
+
+    <div class="mb-4">
+      <label for="y1" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">y1:</label>
+      <input type="number" id="y1" formControlName="y1"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+             required />
+    </div>
+
+    <div class="mb-4">
+      <label for="x2" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">x2:</label>
+      <input type="number" id="x2" formControlName="x2"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+             required />
+    </div>
+
+    <div class="mb-6">
+      <label for="y2" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">y2:</label>
+      <input type="number" id="y2" formControlName="y2"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+             required />
+    </div>
+
+    <button type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            (click)="calcularDistancia()"
+            [disabled]="!formularioDistancia.valid">
+      CALCULAR
+    </button>
+
+    <p class="mt-6 text-lg font-medium text-gray-900 dark:text-white text-center">
+      La distancia entre los dos puntos es:
+      <span class="text-blue-500 font-extrabold">
+        {{ distancia | number:'1.2-2' }}
+      </span>
+    </p>
+
+  </form>
+</div>

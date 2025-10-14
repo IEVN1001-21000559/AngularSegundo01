@@ -18,7 +18,7 @@ export class aporb {
     }
 
 
-    const textoFinal = textoSuma.slice(0, -3); //no usar const
+    let textoFinal = textoSuma.slice(0, -3); 
 
     return { resultado: resultado, textoSuma: textoFinal };
   }
