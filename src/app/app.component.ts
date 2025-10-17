@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { DistanciaComponent } from './formularios/distancia/distancia.component';
+//import { DistanciaComponent } from './formularios/distancia/distancia.component';
 //import { MultiplicacionComponent } from "./formularios/multiplicacion/multiplicacion.component";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { multiplicacionComponent } from "./formularios/multiplicacion/multiplicacion.component";
 
 
 @Component({
@@ -12,10 +13,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
   imports: [
     RouterOutlet,
     NavbarComponent,
-    DistanciaComponent,
-    //MultiplicacionComponent
-    // ... otros componentes/módulos
-  ],
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

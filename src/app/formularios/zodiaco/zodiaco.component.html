@@ -1,0 +1,109 @@
+<div class="flex justify-center py-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
+  <div class="flex flex-col md:flex-row max-w-4xl w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+
+    <div class="p-8 md:w-1/2">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Datos Personales</h3>
+
+      <form [formGroup]="formulario" class="space-y-4">
+
+        <div class="flex flex-col">
+          <label for="nombre" class="text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+          <input id="nombre" type="text" formControlName="nombre" placeholder="Nombre"
+                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        </div>
+
+        <div class="flex flex-col">
+          <label for="apaterno" class="text-sm font-medium text-gray-900 dark:text-white">Apaterno</label>
+          <input id="apaterno" type="text" formControlName="apaterno" placeholder="Apaterno"
+                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        </div>
+
+        <div class="flex flex-col">
+          <label for="amaterno" class="text-sm font-medium text-gray-900 dark:text-white">Amaterno</label>
+          <input id="amaterno" type="text" formControlName="amaterno" placeholder="Amaterno"
+                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        </div>
+
+        <div class="pt-4">
+          <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Fecha de nacimiento</label>
+          <div class="flex space-x-2">
+            <div class="flex-1">
+              <label for="dia" class="text-xs text-gray-500 dark:text-gray-400">Día</label>
+              <input id="dia" type="number" formControlName="dia"
+                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600" />
+            </div>
+            <div class="flex-1">
+              <label for="mes" class="text-xs text-gray-500 dark:text-gray-400">Mes</label>
+              <input id="mes" type="number" formControlName="mes"
+                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600" />
+            </div>
+            <div class="flex-1">
+              <label for="ano" class="text-xs text-gray-500 dark:text-gray-400">Año</label>
+              <input id="ano" type="number" formControlName="ano"
+                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600" />
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Sexo</label>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+              <input id="masculino" type="radio" value="Masculino" formControlName="sexo"
+                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label for="masculino" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Masculino</label>
+            </div>
+            <div class="flex items-center">
+              <input id="femenino" type="radio" value="Femenino" formControlName="sexo"
+                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label for="femenino" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Femenino</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="button"
+                class="mt-6 w-full text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-500"
+                (click)="imprimir()"
+                [disabled]="!formulario.valid">
+          IMPRIMIR
+        </button>
+      </form>
+    </div>
+
+    <div *ngIf="resultadoVisible" class="p-8 md:w-1/2 bg-blue-50 dark:bg-blue-900 flex flex-col justify-center items-center text-center">
+      <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+        Hola {{ nombreCompleto }}
+      </h4>
+
+      <p class="text-lg text-gray-800 dark:text-gray-200">
+        Tienes <span class="text-2xl font-extrabold text-blue-700 dark:text-blue-300">{{ edad }}</span> años
+      </p>
+
+      <p class="text-lg text-gray-800 dark:text-gray-200 mt-2">
+        tu signo zodiacal
+      </p>
+
+      <div [ngSwitch]="signo" class="my-4 p-4 bg-blue-600 dark:bg-blue-700 rounded-full w-24 h-24 flex justify-center items-center">
+
+        <span *ngSwitchCase="'Caballo'" class="text-4xl text-white" aria-label="Caballo">🐎</span>
+        <span *ngSwitchCase="'Rata'" class="text-4xl text-white" aria-label="Rata">🐀</span>
+        <span *ngSwitchCase="'Buey'" class="text-4xl text-white" aria-label="Buey">🐂</span>
+        <span *ngSwitchCase="'Tigre'" class="text-4xl text-white" aria-label="Tigre">🐅</span>
+        <span *ngSwitchCase="'Conejo'" class="text-4xl text-white" aria-label="Conejo">🐇</span>
+        <span *ngSwitchCase="'Dragón'" class="text-4xl text-white" aria-label="Dragón">🐉</span>
+        <span *ngSwitchCase="'Serpiente'" class="text-4xl text-white" aria-label="Serpiente">🐍</span>
+        <span *ngSwitchCase="'Cabra'" class="text-4xl text-white" aria-label="Cabra">🐐</span>
+        <span *ngSwitchCase="'Mono'" class="text-4xl text-white" aria-label="Mono">🐒</span>
+        <span *ngSwitchCase="'Gallo'" class="text-4xl text-white" aria-label="Gallo">🐓</span>
+        <span *ngSwitchCase="'Perro'" class="text-4xl text-white" aria-label="Perro">🐕</span>
+        <span *ngSwitchCase="'Cerdo'" class="text-4xl text-white" aria-label="Cerdo">🐖</span>
+
+        <span *ngSwitchDefault class="text-4xl text-white" aria-label="Zodiaco">⭐</span>
+      </div>
+
+      <h3 class="text-2xl font-extrabold text-gray-900 dark:text-white">
+        Es {{ signo }}
+      </h3>
+    </div>
+  </div>
+</div>
